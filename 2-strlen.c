@@ -17,6 +17,9 @@ int _strlen(char *s)
 	return (str);
 }
 /**
+ *  _strlenc - A program thats returns a string length
+ *   @s: Pionter variable s
+ *   Return: (0)
  */
 int _strlenc(const char *s)
 {
@@ -28,4 +31,3 @@ int _strlenc(const char *s)
 	}
 	return (str);
 }
-	
