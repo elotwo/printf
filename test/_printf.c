@@ -1,51 +1,51 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include "main.h"
 /**
+ * _printf - varadic function that print formatted strings
+ * @format: string variable
+ * Return: (0)
  */
 int _printf(const char *format, ...)
 {
 	va_list course;
+	int n = prit_per(); 
+
 	va_start(course, format);
-	while(*format)
+	while (*format)
 	{
-		if (*format != '%')
+		if (*format == n)
 		{
-			putchar(*format);
+			format++;
+			char specifier = *format;
+			if (specifier == 'd' || specifier == 'i')
+			{
+				int num = va_arg(course, int);
+			}
+			else if (specifier == 'c')
+			{
+				int ch = va_arg(course, int);
+				_single(ch);
+			}
+			else if (specifier == 's')
+			{
+				char * str = va_arg(course, char *);
+				_strings(str);
+			}
+			else
+			{
+				putchar(n);
+				if (specifier != n)
+				{
+					putchar(specifier);
+				}
+			}
 		}
 		else
 		{
-			format++;
-			switch(*format)
-			{
-				case 's':
-					{
-						char *str = va_arg(course, char *);
-						printf("%s", str);
-						break;
-					}
-				case 'c':
-					{
-						char alpha = va_arg(course, int);
-						putchar(alpha);
-						break;
-					}
-				default:
-					{
-						putchar('%');
-						putchar(*format);
-						break;
-					}
-			}
+			putchar(*format);
 		}
 		format++;
 	}
-	va_end(course);
-	return (0);
-}
-int main(void)
-{
-	char *dem = "Elochukwu";
-	char us = 'A';
-	_printf("string: %s\n single character: %c\n", dem, us);
-	return(0);
+	va_end(args);
 }
