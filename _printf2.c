@@ -3,15 +3,19 @@
 #include <stdarg.h>
 #include "main.h"
 /**
+ * _printf - prototype function on printf
+ * @format: variable format for print f
+ * Return: (0)
  */
 int _printf(const char *format, ...)
 {
 	va_list args;
 	char specifier;
 	char per;
+
 	va_start(args, format);
 	per = prit_per();
-	while(*format)
+	while (*format)
 	{
 		if (*format == per)
 		{
@@ -20,6 +24,7 @@ int _printf(const char *format, ...)
 			if (specifier == 'c')
 			{
 				int che = va_arg(args, int);
+
 				_putchar(che);
 			}
 			else if (specifier == 's')
