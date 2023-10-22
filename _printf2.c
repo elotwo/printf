@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include <stdarg.h>
-#include <stdarg.h>
 #include "main.h"
+#include <stdarg.h>
 /**
  * _printf - prototype function on printf
  * @format: variable format for print f
@@ -21,6 +20,11 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			specifier = *format;
+			if (specifier == 'd' || specifier == 'i')
+			{
+				int num = va_arg(args, int);
+				num_n(num);
+			}
 			if (specifier == 'c')
 			{
 				int che = va_arg(args, int);
