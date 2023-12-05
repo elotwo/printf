@@ -2,22 +2,23 @@
 #include <stdarg.h>
 #include "main.h"
 /**
- * print_all - A program that prints all format of characters
+ * _printf - A program that prints all format of characters
  * @format: A varadic variable for entering characters
+ * Return: (0)
  */
 int  _printf(const char *format, ...)
 {
 	int i = 0;
 	char *str;
 	va_list list;
-	va_start(list, format);
 
-	while(format[i])
+	va_start(list, format);
+	while (format[i])
 	{
-		if(format[i] == '%')
+		if (format[i] == '%')
 		{
 			i++;
-			switch(format[i])
+			switch (format[i])
 			{
 				case 'c':
 					_putchar(va_arg(list, int));
@@ -48,5 +49,5 @@ int  _printf(const char *format, ...)
 		i++;
 	}
 	va_end(list);
-	return(0);
+	return (0);
 }
