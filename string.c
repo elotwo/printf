@@ -7,14 +7,10 @@
  * @val: variable arguiment
  * Return: (0);
  */
-int _strings(va_list val)
+int _strings(char *str)
 {
 	int i;
-	char *str;
 	int n;
-
-	str = va_arg(val, char *);
-
 	if (str == NULL)
 	{
 		str = "(null)";
@@ -22,7 +18,7 @@ int _strings(va_list val)
 	n = _strlen(str);
 	for (i = 0; i < n;  i++)
 	{
-		putchar(str[i]);
+		_putchar(str[i]);
 	}
 	return (0);
 }

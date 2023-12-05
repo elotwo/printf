@@ -6,6 +6,5 @@ int _strlen(char *s);
 int _strlenc(const char *s);
 int _printf(const char *format, ...);
 int num_n(int n);
-int _strings(va_list val);
-int prit_per(void);
+int _strings(char *str);
 #endif

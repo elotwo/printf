@@ -1,56 +1,52 @@
 #include <stdio.h>
-#include "main.h"
 #include <stdarg.h>
+#include "main.h"
 /**
- * _printf - prototype function on printf
- * @format: variable format for print f
- * Return: (0)
+ * print_all - A program that prints all format of characters
+ * @format: A varadic variable for entering characters
  */
-int _printf(const char *format, ...)
+int  _printf(const char *format, ...)
 {
-	va_list args;
-	char specifier;
-	char per;
+	int i = 0;
+	char *str;
+	va_list list;
+	va_start(list, format);
 
-	va_start(args, format);
-	per = prit_per();
-	while (*format)
+	while(format[i])
 	{
-		if (*format == per)
+		if(format[i] == '%')
 		{
-			format++;
-			specifier = *format;
-			if (specifier == 'd' || specifier == 'i')
+			i++;
+			switch(format[i])
 			{
-				int num = va_arg(args, int);
-				num_n(num);
-			}
-			if (specifier == 'c')
-			{
-				int che = va_arg(args, int);
-
-				_putchar(che);
-			}
-			else if (specifier == 's')
-			{
-				va_arg(args, char *);
-				_strings(args);
-			}
-			else
-			{
-				putchar(per);
-				if (specifier != per)
-				{
-					putchar(specifier);
-				}
+				case 'c':
+					_putchar(va_arg(list, int));
+					break;
+				case 's':
+					str = va_arg(list, char *);
+					_strings(str);
+					break;
+				case 'd':
+					num_n(va_arg(list, int));
+					break;
+				case 'i':
+					num_n(va_arg(list, int));
+					break;
+				case '%':
+					_putchar('%');
+					break;
+				default:
+					_putchar('%');
+					_putchar(format[i]);
+					break;
 			}
 		}
 		else
 		{
-			putchar(*format);
+			_putchar(format[i]);
 		}
-		format++;
+		i++;
 	}
-	va_end(args);
-	return (0);
+	va_end(list);
+	return(0);
 }
