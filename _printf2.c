@@ -33,6 +33,9 @@ int  _printf(const char *format, ...)
 				case 'i':
 					num_n(va_arg(list, int));
 					break;
+				case 'b':
+					print_binary(va_arg(list, int));
+					break;	
 				case '%':
 					_putchar('%');
 					break;

@@ -7,4 +7,5 @@ int _strlenc(const char *s);
 int _printf(const char *format, ...);
 int num_n(int n);
 int _strings(char *str);
+int print_binary(unsigned int n);
 #endif
